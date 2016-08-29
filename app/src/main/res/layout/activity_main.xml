@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+              android:background="@android:color/white"
+    android:layout_height="match_parent"
+              android:orientation="vertical"
+    tools:context="com.hss01248.progressview.MainActivity">
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/white"
+        android:layout_width="220dp"
+        android:layout_height="220dp">
+       <!-- <View
+            android:id="@+id/ring"
+            android:layout_height="220dp"
+            android:layout_width="220dp"
+            android:background="@drawable/ring"
+          />-->
+        <com.hss01248.progressview.gradientRing.MyRingView
+            android:id="@+id/ring"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"/>
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+</LinearLayout>

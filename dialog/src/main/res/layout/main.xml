@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#ff0000"
+    android:id="@+id/rootView" >
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="弹出单选(popwindow)" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="弹出多选(popwindow)" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="弹出单选(dialog)" />
+    
+    <Button
+    android:id="@+id/button4"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="弹出多选(dialog)" />
+
+</LinearLayout>
