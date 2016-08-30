@@ -6,23 +6,54 @@
     android:layout_height="match_parent"
               android:orientation="vertical"
     tools:context="com.hss01248.progressview.MainActivity">
-    <RelativeLayout
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@android:color/white"
-        android:layout_width="220dp"
-        android:layout_height="220dp">
-       <!-- <View
-            android:id="@+id/ring"
-            android:layout_height="220dp"
-            android:layout_width="220dp"
-            android:background="@drawable/ring"
-          />-->
-        <com.hss01248.progressview.gradientRing.MyRingView
-            android:id="@+id/ring"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"/>
-    </RelativeLayout>
+   <Button
+       android:id="@+id/btn_common_progress"
+       android:layout_margin="5dp"
+       android:text="activity progress"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_context_progress"
+        android:layout_margin="5dp"
+        android:text="context_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_material_alert"
+        android:layout_margin="5dp"
+        android:text="material_alert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_ios_alert"
+        android:layout_margin="5dp"
+        android:text="ios_alert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+ <Button
+     android:id="@+id/btn_ios_alert_vertical"
+     android:layout_margin="5dp"
+     android:text="ios_alert_vertical"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_ios_bottom_sheet"
+        android:layout_margin="5dp"
+        android:text="ios_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_ios_center_list"
+        android:layout_margin="5dp"
+        android:text="ios_center_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 

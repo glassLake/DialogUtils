@@ -1,8 +1,10 @@
 package com.hss01248.progressview;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.ColorDrawable;
@@ -14,28 +16,55 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hss01248.progressview.gradientRing.MyRingView;
+import com.hss01248.lib.MyDialogListener;
+import com.hss01248.lib.MyDialogUtils;
+import com.hss01248.lib.MyItemDialogListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class MainActivity extends Activity {
+
+    @Bind(R.id.btn_common_progress)
+    Button btnCommonProgress;
+    @Bind(R.id.btn_context_progress)
+    Button btnContextProgress;
+    @Bind(R.id.btn_material_alert)
+    Button btnMaterialAlert;
+    @Bind(R.id.btn_ios_alert)
+    Button btnIosAlert;
+    @Bind(R.id.btn_ios_bottom_sheet)
+    Button btnIosBottomSheet;
+    @Bind(R.id.btn_ios_center_list)
+    Button btnIosCenterList;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
 
+    Activity activity;
+    Context context;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        MyRingView ringView = (MyRingView) findViewById(R.id.ring);
-        //ringView.setDefaultColor(Color.RED);
-        ringView.setStrokeWidth(20);
+        activity = this;
+        context = getApplication();
+
 
         /*<set xmlns:android="http://schemas.android.com/apk/res/android">
 <rotate
@@ -69,14 +98,14 @@ android:pivotY="50%" />
     protected void onResume() {
         super.onResume();
 
-       //MyDialogUtils.showProgressDialog(getApplicationContext(),"jindutiao",true,false);
+       // MyDialogUtils.showProgressDialog(getApplicationContext(), "jindutiao", true, false);
 
 
         // showGlobleDialog(this);
 
-       // showDialog();
+        //showDialog();
 
-       // showcenterDialog();
+        // showcenterDialog();
        /* MyDialogUtils.showIosAlert(getApplication(),"hh", "djdsjlfjsd", "本例子是一个自定义的弹出对话框例子源码本例子是一个自定义的弹出对话框例子源码",
                 "弹出的时候有半透明效果", "", false, true, new MyDialogListener() {
             @Override
@@ -117,8 +146,6 @@ android:pivotY="50%" />
         });*/
 
 
-
-
         // toast();
     }
 
@@ -127,7 +154,7 @@ android:pivotY="50%" />
         builder.setView(R.layout.dialog_ios_alert);
         AlertDialog dialog = builder.create();
         Window window = dialog.getWindow();
-       // window.setWindowAnimations(R.style.mystyle);
+        // window.setWindowAnimations(R.style.mystyle);
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//round corner
         builder.show();
     }
@@ -163,7 +190,6 @@ android:pivotY="50%" />
         dialog.onWindowAttributesChanged(wl);
         dialog.show();
     }
-
 
 
     public ProgressDialog showActivityDialog(Activity activity, String msg, boolean cancleable, boolean outsideTouchable) {
@@ -265,13 +291,193 @@ android:pivotY="50%" />
         super.onStart();
 
 
-
-
     }
+
+    @Override
+    public void onBackPressed() {
+
+        if (gloablDialog != null && gloablDialog .isShowing()){
+            gloablDialog.dismiss();
+
+        }else {
+            super.onBackPressed();
+        }
+    }
+
+    Dialog gloablDialog;
+
+    String msg = "如果你有心理咨询师般的敏锐，你会进一步发现——这个姑娘企图用考研来掩饰自己对于毕业的恐惧。\n" +
+            "\n" +
+            "像琴姑娘这样的毕业生很多，她们一段时间内会认真地复习考研。可用不了多久，她们便会动摇，便会找出诸多借口给自己开脱，最后考研一事半途而废。\n" +
+            "\n" +
+            "原因，当事人根本不相信这件事能改变她的命运，能带给她想要的生活。她们相信自己不够努力，也愿意别人骂自己不努力。\n" +
+            "\n" +
+            "他们不愿意思考自己到底该干什么？他们抱着一个幻想，假如我真的努力就能解决问题了吧！于是他们把一个不可控的事件，在心理变成了可控，从而增加安全感。\n" +
+            "\n" +
+            "人真的可以为了逃避真正的思考，而做出任何你想象不到的事。\n" +
+            "\n" +
+            "这种目标是不重结果的，其实它跟刷微博是一个道理，它通过获取无用信息来给自己的生活制造一点喘息。\n" +
+            "\n" +
+            "只不过陷在“学习”中，要比陷在微博上更能安慰自己的内心，那个已经破了个大洞的内心。\n" +
+            "\n" +
+            "作者：剑圣喵大师\n" +
+            "链接：https://www.zhihu.com/question/50126427/answer/119551026\n" +
+            "来源：知乎\n" +
+            "著作权归作者所有，转载请联系作者获得授权。";
 
     @Override
     public void onStop() {
         super.onStop();
+
+    }
+
+    @OnClick({R.id.btn_common_progress, R.id.btn_context_progress, R.id.btn_material_alert, R.id.btn_ios_alert,
+            R.id.btn_ios_alert_vertical, R.id.btn_ios_bottom_sheet, R.id.btn_ios_center_list})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_common_progress:
+                MyDialogUtils.showProgressDialog(this,msg,true,true);
+
+                break;
+            case R.id.btn_context_progress:
+                gloablDialog=   MyDialogUtils.showProgressDialog(getApplicationContext(),msg,true,true);
+                break;
+            case R.id.btn_material_alert:
+                MyDialogUtils.showMdAlert(this, "title", msg, "sure", "cancle", "think about", true, true, new MyDialogListener() {
+                    @Override
+                    public void onFirst(DialogInterface dialog) {
+                        showToast("onFirst");
+                    }
+
+                    @Override
+                    public void onSecond(DialogInterface dialog) {
+                        showToast("onSecond");
+                    }
+
+                    @Override
+                    public void onThird(DialogInterface dialog) {
+                        showToast("onThird");
+                    }
+
+
+                });
+                break;
+            case R.id.btn_ios_alert:
+                MyDialogUtils.showIosAlert(this, "title", msg, "sure", "cancle", "think about", true, true, new MyDialogListener() {
+                    @Override
+                    public void onFirst(DialogInterface dialog) {
+                        showToast("onFirst");
+                    }
+
+                    @Override
+                    public void onSecond(DialogInterface dialog) {
+                        showToast("onSecond");
+                    }
+
+                    @Override
+                    public void onThird(DialogInterface dialog) {
+                        showToast("onThird");
+                    }
+
+
+                });
+                break;
+            case R.id.btn_ios_alert_vertical:
+                MyDialogUtils.showIosAlertVertical(this, "title", msg, "sure", "cancle", "think about", true, true, new MyDialogListener() {
+                    @Override
+                    public void onFirst(DialogInterface dialog) {
+                        showToast("onFirst");
+                    }
+
+                    @Override
+                    public void onSecond(DialogInterface dialog) {
+                        showToast("onSecond");
+                    }
+
+                    @Override
+                    public void onThird(DialogInterface dialog) {
+                        showToast("onThird");
+                    }
+
+
+                });
+                break;
+            case R.id.btn_ios_bottom_sheet:{
+                final List<String> strings = new ArrayList<>();
+                strings.add("1");
+                strings.add("2");
+                strings.add(msg);
+                strings.add("4");
+                strings.add("5");
+                strings.add(msg);
+                strings.add("6");
+                strings.add("7");
+                strings.add(msg);
+                strings.add("8");
+                strings.add("9");
+                strings.add(msg);
+
+                strings.add("10");
+                strings.add("11");
+                strings.add(msg);
+                strings.add("12");
+                strings.add("13");
+                strings.add(msg);
+
+                MyDialogUtils.showBottomItemDialog(activity, strings, "cancle", true, true, new MyItemDialogListener() {
+                    @Override
+                    public void onItemClick(String text,int position) {
+                        showToast(text);
+                    }
+
+                    @Override
+                    public void onBottomBtnClick() {
+                        showToast("onItemClick");
+                    }
+                });}
+                break;
+            case R.id.btn_ios_center_list:
+
+                final List<String> strings = new ArrayList<>();
+                strings.add("1");
+                strings.add("2");
+                strings.add(msg);
+                strings.add("4");
+                strings.add("5");
+                strings.add(msg);
+                strings.add("6");
+                strings.add("7");
+                strings.add(msg);
+                strings.add("8");
+                strings.add("9");
+                strings.add(msg);
+
+                strings.add("10");
+                strings.add("11");
+                strings.add(msg);
+                strings.add("12");
+                strings.add("13");
+                strings.add(msg);
+
+                MyDialogUtils.showIosSingleChoose(activity, strings, true, true, new MyItemDialogListener() {
+                    @Override
+                    public void onItemClick(String text,int position) {
+                        showToast(text);
+                    }
+
+                    @Override
+                    public void onBottomBtnClick() {
+                        showToast("onItemClick");
+                    }
+                });
+
+                break;
+        }
+    }
+
+
+    public  void showToast(String msg){
+        Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
 
     }
 }
