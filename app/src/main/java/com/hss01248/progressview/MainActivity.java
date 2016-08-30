@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hss01248.lib.MyDialogListener;
-import com.hss01248.lib.MyDialogUtils;
+import com.hss01248.lib.StytledDialog;
 import com.hss01248.lib.MyItemDialogListener;
 
 import java.util.ArrayList;
@@ -336,14 +336,14 @@ android:pivotY="50%" />
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_common_progress:
-                MyDialogUtils.showProgressDialog(this,msg,true,true);
+                StytledDialog.showProgressDialog(this,msg,true,true);
 
                 break;
             case R.id.btn_context_progress:
-                gloablDialog=   MyDialogUtils.showProgressDialog(getApplicationContext(),msg,true,true);
+                gloablDialog=   StytledDialog.showProgressDialog(getApplicationContext(),msg,true,true);
                 break;
             case R.id.btn_material_alert:
-                MyDialogUtils.showMdAlert(this, "title", msg, "sure", "cancle", "think about", true, true, new MyDialogListener() {
+                StytledDialog.showMdAlert(this, "title", msg, "sure", "cancle", "think about", true, true, new MyDialogListener() {
                     @Override
                     public void onFirst(DialogInterface dialog) {
                         showToast("onFirst");
@@ -363,7 +363,7 @@ android:pivotY="50%" />
                 });
                 break;
             case R.id.btn_ios_alert:
-                MyDialogUtils.showIosAlert(this, "title", msg, "sure", "cancle", "think about", true, true, new MyDialogListener() {
+                StytledDialog.showIosAlert(this, "title", msg, "sure", "cancle", "think about", true, true, new MyDialogListener() {
                     @Override
                     public void onFirst(DialogInterface dialog) {
                         showToast("onFirst");
@@ -383,7 +383,7 @@ android:pivotY="50%" />
                 });
                 break;
             case R.id.btn_ios_alert_vertical:
-                MyDialogUtils.showIosAlertVertical(this, "title", msg, "sure", "cancle", "think about", true, true, new MyDialogListener() {
+                StytledDialog.showIosAlertVertical(this, "title", msg, "sure", "cancle", "think about", true, true, new MyDialogListener() {
                     @Override
                     public void onFirst(DialogInterface dialog) {
                         showToast("onFirst");
@@ -424,7 +424,7 @@ android:pivotY="50%" />
                 strings.add("13");
                 strings.add(msg);
 
-                MyDialogUtils.showBottomItemDialog(activity, strings, "cancle", true, true, new MyItemDialogListener() {
+                StytledDialog.showBottomItemDialog(activity, strings, "cancle", true, true, new MyItemDialogListener() {
                     @Override
                     public void onItemClick(String text,int position) {
                         showToast(text);
@@ -459,7 +459,7 @@ android:pivotY="50%" />
                 strings.add("13");
                 strings.add(msg);
 
-                MyDialogUtils.showIosSingleChoose(activity, strings, true, true, new MyItemDialogListener() {
+                StytledDialog.showIosSingleChoose(activity, strings, true, true, new MyItemDialogListener() {
                     @Override
                     public void onItemClick(String text,int position) {
                         showToast(text);

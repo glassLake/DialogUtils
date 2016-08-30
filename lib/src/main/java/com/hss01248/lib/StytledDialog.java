@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/5/4 0004.
  */
-public class MyDialogUtils {
+public class StytledDialog {
 
 
     /**
