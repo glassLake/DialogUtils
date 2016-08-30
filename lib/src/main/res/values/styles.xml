@@ -2,16 +2,16 @@
 
     <!-- Base application theme. -->
 
-    <style name="loading_dialog" parent="Base.Theme.AppCompat.Light.Dialog">
-        <!--<item name="android:windowFrame">@null</item>
+   <!-- <style name="loading_dialog" parent="Base.Theme.AppCompat.Light.Dialog">
+        &lt;!&ndash;<item name="android:windowFrame">@null</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:backgroundDimEnabled">false</item>-->
-    </style>
+        <item name="android:backgroundDimEnabled">false</item>&ndash;&gt;
+    </style>-->
 
     <style name="mystyle" parent="android:Animation">
     <item name="@android:windowEnterAnimation">@anim/dialog_enter</item>  //进入时的动画
