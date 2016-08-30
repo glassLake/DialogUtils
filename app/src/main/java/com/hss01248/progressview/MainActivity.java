@@ -21,8 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hss01248.lib.MyDialogListener;
-import com.hss01248.lib.StytledDialog;
 import com.hss01248.lib.MyItemDialogListener;
+import com.hss01248.lib.StytledDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +54,12 @@ public class MainActivity extends Activity {
 
     Activity activity;
     Context context;
+    @Bind(R.id.btn_ios_alert_vertical)
+    Button btnIosAlertVertical;
+    @Bind(R.id.btn_ios_alert_2)
+    Button btnIosAlert2;
+    @Bind(R.id.btn_ios_alert_vertical_2)
+    Button btnIosAlertVertical2;
 
 
     @Override
@@ -98,7 +104,7 @@ android:pivotY="50%" />
     protected void onResume() {
         super.onResume();
 
-       // MyDialogUtils.showProgressDialog(getApplicationContext(), "jindutiao", true, false);
+        // MyDialogUtils.showProgressDialog(getApplicationContext(), "jindutiao", true, false);
 
 
         // showGlobleDialog(this);
@@ -296,18 +302,18 @@ android:pivotY="50%" />
     @Override
     public void onBackPressed() {
 
-        if (gloablDialog != null && gloablDialog .isShowing()){
+        if (gloablDialog != null && gloablDialog.isShowing()) {
             gloablDialog.dismiss();
 
-        }else {
+        } else {
             super.onBackPressed();
         }
     }
 
     Dialog gloablDialog;
 
-    String msg = "如果你有心理咨询师般的敏锐，你会进一步发现——这个姑娘企图用考研来掩饰自己对于毕业的恐惧。\n" +
-            "\n" +
+    String msg = "如果你有心理咨询师般的敏锐，你会进一步发现——这个姑娘企图用考研来掩饰自己对于毕业的恐惧。";
+           /* "\n" +
             "像琴姑娘这样的毕业生很多，她们一段时间内会认真地复习考研。可用不了多久，她们便会动摇，便会找出诸多借口给自己开脱，最后考研一事半途而废。\n" +
             "\n" +
             "原因，当事人根本不相信这件事能改变她的命运，能带给她想要的生活。她们相信自己不够努力，也愿意别人骂自己不努力。\n" +
@@ -323,7 +329,7 @@ android:pivotY="50%" />
             "作者：剑圣喵大师\n" +
             "链接：https://www.zhihu.com/question/50126427/answer/119551026\n" +
             "来源：知乎\n" +
-            "著作权归作者所有，转载请联系作者获得授权。";
+            "著作权归作者所有，转载请联系作者获得授权。";*/
 
     @Override
     public void onStop() {
@@ -332,15 +338,15 @@ android:pivotY="50%" />
     }
 
     @OnClick({R.id.btn_common_progress, R.id.btn_context_progress, R.id.btn_material_alert, R.id.btn_ios_alert,
-            R.id.btn_ios_alert_vertical, R.id.btn_ios_bottom_sheet, R.id.btn_ios_center_list})
+            R.id.btn_ios_alert_vertical, R.id.btn_ios_bottom_sheet, R.id.btn_ios_center_list,R.id.btn_ios_alert_2, R.id.btn_ios_alert_vertical_2})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_common_progress:
-                StytledDialog.showProgressDialog(this,msg,true,true);
+                StytledDialog.showProgressDialog(this, msg, true, true);
 
                 break;
             case R.id.btn_context_progress:
-                gloablDialog=   StytledDialog.showProgressDialog(getApplicationContext(),msg,true,true);
+                gloablDialog = StytledDialog.showProgressDialog(getApplicationContext(), msg, true, true);
                 break;
             case R.id.btn_material_alert:
                 StytledDialog.showMdAlert(this, "title", msg, "sure", "cancle", "think about", true, true, new MyDialogListener() {
@@ -402,14 +408,14 @@ android:pivotY="50%" />
 
                 });
                 break;
-            case R.id.btn_ios_bottom_sheet:{
+            case R.id.btn_ios_bottom_sheet: {
                 final List<String> strings = new ArrayList<>();
                 strings.add("1");
                 strings.add("2");
                 strings.add(msg);
                 strings.add("4");
                 strings.add("5");
-                strings.add(msg);
+               /* strings.add(msg);
                 strings.add("6");
                 strings.add("7");
                 strings.add(msg);
@@ -422,11 +428,11 @@ android:pivotY="50%" />
                 strings.add(msg);
                 strings.add("12");
                 strings.add("13");
-                strings.add(msg);
+                strings.add(msg);*/
 
                 StytledDialog.showBottomItemDialog(activity, strings, "cancle", true, true, new MyItemDialogListener() {
                     @Override
-                    public void onItemClick(String text,int position) {
+                    public void onItemClick(String text, int position) {
                         showToast(text);
                     }
 
@@ -434,8 +440,9 @@ android:pivotY="50%" />
                     public void onBottomBtnClick() {
                         showToast("onItemClick");
                     }
-                });}
-                break;
+                });
+            }
+            break;
             case R.id.btn_ios_center_list:
 
                 final List<String> strings = new ArrayList<>();
@@ -445,7 +452,7 @@ android:pivotY="50%" />
                 strings.add("4");
                 strings.add("5");
                 strings.add(msg);
-                strings.add("6");
+             /*   strings.add("6");
                 strings.add("7");
                 strings.add(msg);
                 strings.add("8");
@@ -457,11 +464,11 @@ android:pivotY="50%" />
                 strings.add(msg);
                 strings.add("12");
                 strings.add("13");
-                strings.add(msg);
+                strings.add(msg);*/
 
                 StytledDialog.showIosSingleChoose(activity, strings, true, true, new MyItemDialogListener() {
                     @Override
-                    public void onItemClick(String text,int position) {
+                    public void onItemClick(String text, int position) {
                         showToast(text);
                     }
 
@@ -472,12 +479,55 @@ android:pivotY="50%" />
                 });
 
                 break;
+            case R.id.btn_ios_alert_2:
+                StytledDialog.showIosAlert(this, "title", msg, "sure", "", "", true, true, new MyDialogListener() {
+                    @Override
+                    public void onFirst(DialogInterface dialog) {
+                        showToast("onFirst");
+                    }
+
+                    @Override
+                    public void onSecond(DialogInterface dialog) {
+                        showToast("onSecond");
+                    }
+
+                    @Override
+                    public void onThird(DialogInterface dialog) {
+                       // showToast("onThird");
+                    }
+
+
+                });
+
+                break;
+            case R.id.btn_ios_alert_vertical_2:
+                StytledDialog.showIosAlertVertical(this, "title", msg, "sure", "", "", true, true, new MyDialogListener() {
+                    @Override
+                    public void onFirst(DialogInterface dialog) {
+                        showToast("onFirst");
+                    }
+
+                    @Override
+                    public void onSecond(DialogInterface dialog) {
+                        showToast("onSecond");
+                    }
+
+                    @Override
+                    public void onThird(DialogInterface dialog) {
+                        showToast("onThird");
+                    }
+
+
+                });
+                break;
         }
     }
 
 
-    public  void showToast(String msg){
-        Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
+    public void showToast(String msg) {
+        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
 
     }
+
+
 }

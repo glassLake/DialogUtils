@@ -42,6 +42,20 @@
      android:layout_height="wrap_content" />
 
     <Button
+        android:id="@+id/btn_ios_alert_2"
+        android:layout_margin="5dp"
+        android:text="ios_alert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_ios_alert_vertical_2"
+        android:layout_margin="5dp"
+        android:text="ios_alert_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
         android:id="@+id/btn_ios_bottom_sheet"
         android:layout_margin="5dp"
         android:text="ios_bottom_sheet"
