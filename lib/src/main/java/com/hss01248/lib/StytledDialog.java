@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.AppCompatDialog;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -78,6 +79,19 @@ public class StytledDialog {
         });
         dialog.show();
        return dialog;
+    }
+
+
+    public static void dismiss(Dialog dialog){
+        if (dialog != null && dialog.isShowing()){
+            dialog.dismiss();
+        }
+    }
+
+    public static void dismiss(AppCompatDialog dialog){
+        if (dialog != null && dialog.isShowing()){
+            dialog.dismiss();
+        }
     }
 
 
