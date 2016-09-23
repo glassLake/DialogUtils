@@ -1,3 +1,8 @@
+
+# Deprecated
+此库不再维护,新地址请看:[ https://github.com/hss01248/DialogUtil](https://github.com/hss01248/DialogUtil)
+
+
 # DialogUtils
 material风格，ios风格，传入context构建，可在任意界面弹出，以及dialog样式的activity(todo)
 
